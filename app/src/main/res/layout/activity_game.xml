@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:orientation="vertical"
+    android:background="@drawable/fonn"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+    <ImageView
+        android:id="@+id/tv_Question"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="16dp"
+
+        android:textColor="@color/black"
+        android:textStyle="bold"
+
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+
+        >
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_Bar"
+
+            app:trackColor="@color/white"
+            android:progressBackgroundTint="@color/black"
+            android:layout_width="300dp"
+            android:progress="0"
+            android:layout_marginStart="15dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginEnd="35dp"
+            app:indicatorColor="@color/black"
+            app:indicatorDirectionLinear="leftToRight"
+            android:max="10"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/text_progress"
+            android:layout_width="50dp"
+            android:textColor="@color/black"
+            android:layout_height="30dp"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn1"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:letterSpacing="0.2"
+        android:paddingVertical="16dp"
+        android:text="Option 1"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:cornerRadius="24dp"
+        app:strokeColor="#FDD835"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn2"
+    android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeWidth="2dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:strokeColor="#FDD835"
+        app:cornerRadius="24dp"
+    android:text="Option 2"
+    android:letterSpacing="0.2"
+android:layout_marginHorizontal="16dp"
+    android:paddingVertical="16dp"
+    android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn3"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:letterSpacing="0.2"
+        android:paddingVertical="16dp"
+        android:text="option 3"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:cornerRadius="24dp"
+        app:strokeColor="#FDD835"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:cornerRadius="24dp"
+        android:text="option 4"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:strokeWidth="2dp"
+        app:strokeColor="#FDD835"
+        android:letterSpacing="0.2"
+     android:layout_marginHorizontal="16dp"
+        android:paddingVertical="16dp"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:cornerRadius="36dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="#D81B60"
+        android:textColor="#C0CA33"
+        android:textSize="20dp"
+
+        android:backgroundTint="#A8D81F63"
+        android:letterSpacing="0.2"
+        android:layout_margin="16dp"
+        android:paddingVertical="24dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

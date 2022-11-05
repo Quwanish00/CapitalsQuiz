@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Capital Quiz App</string>
+    <string name="error_majburiy">Majburiy!</string>
+    <string name="text_submit">Submit</string>
+    <string name="continue_text">Continue</string>
+    <string name="text_finish">Finish</string>
+</resources>
