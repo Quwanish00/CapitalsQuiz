@@ -38,6 +38,7 @@ class StartActivity : AppCompatActivity() {
                 sharedPreferens.edit().putString("username",name).apply()
                 val intent=Intent(this,GameActivity::class.java)
                 startActivity(intent)
+                finish()
             }
 
         }

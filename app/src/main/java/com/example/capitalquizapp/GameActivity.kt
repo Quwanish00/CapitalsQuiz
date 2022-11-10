@@ -18,10 +18,11 @@ import com.google.android.material.snackbar.Snackbar
 class GameActivity : AppCompatActivity() {
     private lateinit var
             binding: ActivityGameBinding
-    private val questions = Constants.porvideQuestions()
+    private val questions = Constants.porvideQuestions().shuffled()
     private var count = 0
     private var selectedAnswerId = -1
     private var currentQuestionId = -1
+
 
 
 
@@ -73,6 +74,8 @@ class GameActivity : AppCompatActivity() {
             }
 
             btnSubmit.setOnClickListener {
+
+
                 binding.apply {
                     btn1.isEnabled = true
                     btn2.isEnabled = true
@@ -84,25 +87,36 @@ class GameActivity : AppCompatActivity() {
 
 
 
-                if (btnSubmit.text == getString(R.string.text_submit)) checkAnswer()
-                else {
-                    binding.apply {
-                        btn1.backgroundTintList = ColorStateList.valueOf(
-                            ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
-                        )
-                        btn2.backgroundTintList = ColorStateList.valueOf(
-                            ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
-                        )
-                        btn3.backgroundTintList = ColorStateList.valueOf(
-                            ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
-                        )
-                        btn4.backgroundTintList = ColorStateList.valueOf(
-                            ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
-                        )
-                    }
-                    currentQuestionId++
-                    setQuestion()
+                when (btnSubmit.text) {
+                    getString(R.string.text_submit) -> checkAnswer()
+                    getString(R.string.text_finish) -> {
 
+
+                        val intent=Intent(this@GameActivity,JuwaplarSani::class.java)
+                        intent.putExtra("My_juwap",count.toString())
+                        startActivity(intent)
+                        finish()
+
+                    }
+                    getString(R.string.continue_text) -> {
+                        binding.apply {
+                            btn1.backgroundTintList = ColorStateList.valueOf(
+                                ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
+                            )
+                            btn2.backgroundTintList = ColorStateList.valueOf(
+                                ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
+                            )
+                            btn3.backgroundTintList = ColorStateList.valueOf(
+                                ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
+                            )
+                            btn4.backgroundTintList = ColorStateList.valueOf(
+                                ContextCompat.getColor(this@GameActivity, R.color.tranparent_color)
+                            )
+                        }
+                        currentQuestionId++
+                        setQuestion()
+
+                    }
                 }
             }
 
@@ -116,9 +130,9 @@ class GameActivity : AppCompatActivity() {
         val currentQuestions = questions[currentQuestionId]
 
 
-        binding.progressBar.progress=currentQuestionId
+        binding.progressBar.progress=currentQuestionId+1
         binding.progressBar.max=questions.size
-        binding.textProgress.text="${currentQuestionId}"+"/"+"${questions.size}"
+        binding.textProgress.text="${currentQuestionId+1}"+"/"+"${questions.size}"
 
 
 
@@ -171,6 +185,10 @@ class GameActivity : AppCompatActivity() {
 
     private fun checkAnswer() {
         val currentQuestion = questions[currentQuestionId]
+
+        if(selectedAnswerId==currentQuestion.correctAnswerId){
+            count++
+        }
 
         if (selectedAnswerId == -1) {
             Snackbar.make(
@@ -228,13 +246,15 @@ class GameActivity : AppCompatActivity() {
                     )
                 }
             }
-            if(selectedAnswerId==currentQuestionId){
-                count++
 
-
+            if(currentQuestionId!=questions.lastIndex){
+                btnSubmit.text=getString(R.string.continue_text)
+            }
+            else{
+                btnSubmit.text=getString(R.string.text_finish)
             }
 
-            btnSubmit.text = getString(R.string.continue_text)
+
 
             btn1.isEnabled = false
             btn2.isEnabled = false
@@ -248,19 +268,10 @@ class GameActivity : AppCompatActivity() {
 selectedAnswerId = -1
 
 
-        if(currentQuestionId==questions.size-1){
-            binding.btnSubmit.text=getString(R.string.text_finish)
 
-            binding.btnSubmit.setOnClickListener {
-                val intent=Intent(this,JuwaplarSani::class.java)
-                intent.putExtra("My_juwap",count)
-                startActivity(intent)
-
-            }
-
-        }
 
     }
+
 
 
 
